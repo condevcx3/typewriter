@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 6c781cf4f33ff3d4e94ae795353a94dc
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: JMH Typewriter mono Fine Cross
+  fontNames:
+  - JMH Typewriter mono Fine Cross
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 594ab66471217fb4680af7b2043be01a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

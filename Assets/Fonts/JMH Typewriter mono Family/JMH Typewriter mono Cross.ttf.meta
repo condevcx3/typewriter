@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: dfccc3cf65c4f6f4d983692546d32875
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: JMH Typewriter mono Cross
+  fontNames:
+  - JMH Typewriter mono Cross
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 78aee575549c7924196fe1f1fbfcf70a, type: 3}
+  - {fileID: 12800000, guid: 1af674a69061a88478edfd7e7c3092de, type: 3}
+  - {fileID: 12800000, guid: 7a27217ab201f0349b45be3851b298ec, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

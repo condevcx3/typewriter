@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: aea9b0ac9992f444084b27cd86a0c9f1
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: JMH Typewriter mono Under
+  fontNames:
+  - JMH Typewriter mono Under
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 85543f045cb3dc848946fb84f3a7da35, type: 3}
+  - {fileID: 12800000, guid: a3c57b8c30f7037438af4a1a268d974a, type: 3}
+  - {fileID: 12800000, guid: f898a41d03dc1714991f448d648744b9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
