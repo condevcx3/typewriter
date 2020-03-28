@@ -13,9 +13,22 @@ public class mainMenu : MonoBehaviour
     //Play and Quit stuff
     public Font selected;
     public Font unselected;
+    public GameObject TitleText;
     public GameObject playText;
     public GameObject quitText;
+    public GameObject introText;
     private int selection = 0;
+    private IEnumerator coroutine;
+    private bool messageDisplayed;
+    private string fullText;
+
+    //
+    private List<string> introList = new List<string>(){"They say that when an object has been around for hundreds of years, it can gain sentience... or some form that resembles sentience.", 
+    "Objects that gain strong ‘wills’ this way can gain characteristics resembling their purpose, and what their desire is when they gain sentience.",
+    "The last thing you remember was going through your late grandfather’s attic, sorting through his stored items in preparation of selling his estate. In the back of the attic, you came across a typewriter, with a single half-finished paper sticking out of it. When you went to move the typewriter, you blacked out, and you found yourself here.",
+    "“Who are you?” You might be asking? Think of me as the narrator for this unfinished story, and think of yourself as the main character who needs to finish it.",
+    "Your actions will correspond to actions that will be written on the page, but keep in mind that only 16 lines can fit on a single page, and whenever you hit that, you will be reset back to the place you started. You will lose any progress that you have made, but you get to keep all of the items that you have found up to that point.",
+    "Good luck, protagonist, on your story."};
 
     //Player
     public GameObject player;
@@ -30,7 +43,7 @@ public class mainMenu : MonoBehaviour
     }
 
     IEnumerator showTitle(){
-        string fullText = this.GetComponent<Text>().text;
+        string fullText = TitleText.GetComponent<Text>().text;
         AudioSource[] clacks = GetComponents<AudioSource>();
         for(int i = 0; i < fullText.Length + 1; i++){ //Plus one because substring i is exclusive not inclusive
             currentText = fullText.Substring(0, i);
@@ -47,10 +60,33 @@ public class mainMenu : MonoBehaviour
                 playText.SetActive(true);
                 quitText.SetActive(true);
             }
-            this.GetComponent<Text>().text = currentText;
+            TitleText.GetComponent<Text>().text = currentText;
             yield return new WaitForSeconds(delay);
         }
         
+    }
+
+    IEnumerator showIntroduction() {
+        messageDisplayed = false;
+        introText.SetActive(true);
+        string currentText = "";
+        AudioSource[] clacks = GetComponents<AudioSource>();
+        float delay = 0.050f;
+        fullText = introList[0];
+        Debug.Log(fullText);
+
+        for (int i = 0; i < introList[0].Length; i++) {
+            currentText += introList[0].Substring(i, 1);
+            if (!clacks[0].isPlaying) {
+                clacks[0].Play(0);
+            }
+            if (i == introList[0].Length-1) {
+                clacks[1].Play(0);
+            }
+            introText.GetComponent<Text>().text = currentText;
+            yield return new WaitForSeconds(delay);
+        }
+        messageDisplayed = true;
     }
 
     void Update(){
@@ -75,6 +111,25 @@ public class mainMenu : MonoBehaviour
             Debug.Log("Quit");
             Application.Quit();
         }
+
+        if (messageDisplayed && Input.GetKeyDown(KeyCode.Q)) {
+            if (introList.Count > 1) {
+                introList.RemoveAt(0);
+                coroutine = showIntroduction();
+                StartCoroutine(coroutine);
+                Debug.Log("New coroutine");
+            }
+            else {
+                player.SetActive(false);
+                //yield return new WaitForSeconds(1.5f);
+                SceneManager.LoadScene("Game");
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Q)) {
+            StopCoroutine(coroutine);
+            introText.GetComponent<Text>().text = introList[0];
+            messageDisplayed = true;
+        }
     }
 
     IEnumerator startGame(){
@@ -83,13 +138,12 @@ public class mainMenu : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         playText.SetActive(false);
         quitText.SetActive(false);
-        this.GetComponent<Text>().text = "";
-        player.SetActive(false);
+        TitleText.GetComponent<Text>().text = "";
+        coroutine = showIntroduction();
+        StartCoroutine(coroutine);
+        /* player.SetActive(false);
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene("Game");
-
-
-
+        SceneManager.LoadScene("Game"); */
     }
 
 }
