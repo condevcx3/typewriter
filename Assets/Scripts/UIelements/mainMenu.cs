@@ -37,12 +37,15 @@ public class mainMenu : MonoBehaviour
     void Start()
     {
         StartCoroutine(showTitle());
+        playText.SetActive(true);
+        quitText.SetActive(true);
         playText.GetComponent<Text>().font = selected;
         quitText.GetComponent<Text>().font = unselected;
         
     }
 
     IEnumerator showTitle(){
+        TitleText.SetActive(true);
         string fullText = TitleText.GetComponent<Text>().text;
         AudioSource[] clacks = GetComponents<AudioSource>();
         for(int i = 0; i < fullText.Length + 1; i++){ //Plus one because substring i is exclusive not inclusive
