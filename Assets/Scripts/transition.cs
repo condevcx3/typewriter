@@ -25,6 +25,9 @@ public class transition : MonoBehaviour
     private string toGateLocked = " There is a large locked gate.";
     private string toGateOpen = " There is a large open gate here.";
     private string toVoid = " A guard stands in your path.";
+    private string toQuietForest1 = " A dapper man needs a hand.";
+    private string toQuietForest2 = " Sticks lie in your path.";
+    private string toQuietForest3 = " A dapper man awaits you.";
 
 
     void Start(){
@@ -116,6 +119,15 @@ public class transition : MonoBehaviour
         }
         else if (newArea.name == "Gate"){
             typer.receiveAction(toGateOpen);
+        }
+        else if (newArea.name == "QuietForest (1)"){
+            typer.receiveAction(toQuietForest1);
+        }
+        else if (newArea.name == "QuietForest (2)"){
+            typer.receiveAction(toQuietForest2);
+        }
+        else if (newArea.name == "QuietForest (3)"){
+            typer.receiveAction(toQuietForest3);
         }
     }
 
