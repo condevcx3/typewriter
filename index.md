@@ -11,8 +11,6 @@
     <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "Build/WebBuild.json", {onProgress: UnityProgress});
     </script>
-  </head>
-  <body>
     Controls:<br>
     <br>
     Title Screen ~<br>
@@ -25,6 +23,8 @@
     E - No / Back<br>
     I - Open / Close Inventory<br>
     P - Pause
+  </head>
+  <body>
     <div class="webgl-content">
       <div id="unityContainer" style="width: 960px; height: 600px"></div>
       <div class="footer">
