@@ -13,6 +13,18 @@
     </script>
   </head>
   <body>
+    Controls:<br>
+    <br>
+    Title Screen ~<br>
+    WASD - movement<br>
+    Q - Yes / Interact<br>
+    <br>
+    Game ~<br>
+    WASD - movement<br>
+    Q - Yes / Interact<br>
+    E - No / Back<br>
+    I - Open / Close Inventory<br>
+    P - Pause
     <div class="webgl-content">
       <div id="unityContainer" style="width: 960px; height: 600px"></div>
       <div class="footer">
