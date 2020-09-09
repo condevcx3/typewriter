@@ -14,6 +14,11 @@ public class DialogueBox : MonoBehaviour
     private PlayerController playerController;
     private List<string> dialoguePipeline;
     private List<string> namePipeline;
+    private bool partyMode;
+
+    void Start(){
+        partyMode = false;
+    }
 
     public void createDialogue(PlayerController playerControl, List<string> dialogueList, List<string> nameList){
         playerController = playerControl; //new List<string>(playerControl); if you want the convo to start over again
@@ -22,6 +27,13 @@ public class DialogueBox : MonoBehaviour
         coroutine = typeDialogue();
 
         StartCoroutine(coroutine);
+    }
+
+    public void activatePartyMode(){
+        partyMode = true;
+    }
+    public void deactivatePartyMode(){
+        partyMode = false;
     }
 
     IEnumerator typeDialogue(){
@@ -47,12 +59,13 @@ public class DialogueBox : MonoBehaviour
                 namePipeline.RemoveAt(0);
                 coroutine = typeDialogue();
                 StartCoroutine(coroutine);
-                Debug.Log("New coroutine");
+                //Debug.Log("New coroutine");
             }
             else{ //Else there are no more messages to display
-                playerController.enabled = true;
-                gameObject.SetActive(false);
-                //Hopefully this also removes everything from it?
+                if (!partyMode){
+                    playerController.enabled = true;
+                    gameObject.SetActive(false);
+                }
             }
         }
         else if (Input.GetKeyDown(KeyCode.Q)){

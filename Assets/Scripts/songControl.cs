@@ -11,6 +11,12 @@ public class songControl : MonoBehaviour
     public GameObject battleBox;
     public GameObject road;
     public GameObject meadow;
+    public GameObject partyWall;
+    public GameObject quietForest1;
+    public GameObject quietForest2;
+    public GameObject quietForest3;
+    public GameObject pathToStart1;
+    public GameObject pathToStart2;
 
     private AudioSource[] songs;
 
@@ -34,17 +40,23 @@ public class songControl : MonoBehaviour
         else if (!bigAls.activeSelf){
             songs[2].Stop();
         }
-        if (battleBox.activeSelf && !songs[1].isPlaying){
+        /*if (battleBox.activeSelf && !songs[1].isPlaying){
             songs[1].Play(0);
         }
         else if (!battleBox.activeSelf){
             songs[1].Stop();
-        }
+        }*/
         if ((road.activeSelf || meadow.activeSelf) && !songs[3].isPlaying){
             songs[3].Play(0);
         }
         else if (!road.activeSelf && !meadow.activeSelf){
             songs[3].Stop();
+        }
+        if ((quietForest1.activeSelf || quietForest2.activeSelf || quietForest3.activeSelf || partyWall.activeSelf || pathToStart1.activeSelf || pathToStart2.activeSelf) && !songs[6].isPlaying){
+            songs[6].Play(0);
+        }
+        else if (!quietForest1.activeSelf && !quietForest2.activeSelf && !quietForest3.activeSelf && !pathToStart1.activeSelf && !pathToStart2.activeSelf && !partyWall.activeSelf){
+            songs[6].Stop();
         }
     }
 }
