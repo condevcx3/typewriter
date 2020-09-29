@@ -122,6 +122,15 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("movingUp", false);
     }
 
+    public void setPause(bool newPause){
+        //this.stopMoving();
+        pause = newPause;
+    }
+
+    public bool getPause(){
+        return pause;
+    }
+
     void FixedUpdate(){
         rigidBody.MovePosition(rigidBody.position + moveVelocity * Time.fixedDeltaTime);
     }

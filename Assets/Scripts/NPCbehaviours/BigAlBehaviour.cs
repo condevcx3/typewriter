@@ -63,6 +63,7 @@ public class BigAlBehaviour : MonoBehaviour
     }
 
     public void resetText(){
+        inRange = false;
         nameList1 = new List<string>(){"Big Al", "Big Al", "You", "Big Al", "You", "Big Al", "Big Al", "Congratulations!", "Big Al"};
         messageList1 = new List<string>(){"Whaddya lookin at, punk?\nScram! You're scaring away all my good business.",
         "Unless... Are you gonna be good business for me, kid?",

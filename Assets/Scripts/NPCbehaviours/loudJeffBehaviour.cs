@@ -5,15 +5,14 @@ using UnityEngine;
 public class loudJeffBehaviour : MonoBehaviour
 {
     private SpriteRenderer render;
-    public GameObject player;
     public GameObject dialogueBox;
     private DialogueBox dialogueReceiver;
     // Pre Party Popper
     private List<string> nameList1 = new List<string>(){"LOUD JEFF", "You", "LOUD JEFF", "LOUD JEFF", "LOUD JEFF"};
-    private List<string> messageList1 = new List<string>(){"HELLO BOY!\nI HEARD YOU'RE LOOKING FOR A PARTY POPPER!",
+    private List<string> messageList1 = new List<string>(){"HELLO BOY!\nI HEARD YOU'RE LOOKING FOR A NOISEMAKER!",
     "I am, but how did you know that?",
     "DON'T SWEAT THE MINOR DETAILS!\nIF YOU COMPLETE MY CHALLENGE I WILL GIVE YOU ONE!",
-    "IF YOU CAN GET THROUGH MY MAZE!!\nWITHOUT STEPPING ON A SINGLE STICK!!\nTHE POPPER IS YOURS!!",
+    "IF YOU CAN GET THROUGH MY MAZE!!\nWITHOUT STEPPING ON A SINGLE STICK!!\nTHE NOISEMAKER IS YOURS!!",
     "WHAT ARE YOU STILL DOING HERE?\nTHE CHALLENGE AWAITS!"};
     // Post Party Popper
     private List<string> nameList2 = new List<string>(){"LOUD JEFF"};
@@ -51,11 +50,12 @@ public class loudJeffBehaviour : MonoBehaviour
     }
 
     public void resetText(){
+        inRange = false;
         nameList1 = new List<string>(){"LOUD JEFF", "You", "LOUD JEFF", "LOUD JEFF", "LOUD JEFF"};
-        messageList1 = new List<string>(){"HELLO BOY!\nI HEARD YOU'RE LOOKING FOR A PARTY POPPER!",
+        messageList1 = new List<string>(){"HELLO BOY!\nI HEARD YOU'RE LOOKING FOR A NOISEMAKER!",
         "I am, but how did you know that?",
         "DON'T SWEAT THE MINOR DETAILS!\nIF YOU COMPLETE MY CHALLENGE I WILL GIVE YOU ONE!",
-        "IF YOU CAN GET THROUGH MY MAZE!!\nWITHOUT STEPPING ON A SINGLE STICK!!\nTHE POPPER IS YOURS!!",
+        "IF YOU CAN GET THROUGH MY MAZE!!\nWITHOUT STEPPING ON A SINGLE STICK!!\nTHE NOISEMAKER IS YOURS!!",
         "WHAT ARE YOU STILL DOING HERE?\nTHE CHALLENGE AWAITS!"};
         nameList2 = new List<string>(){"LOUD JEFF"};
         messageList2 = new List<string>(){"GHOSTS CAN'T STEP ON THINGS!!\nHAHAHAHAHHAHAHAH"};

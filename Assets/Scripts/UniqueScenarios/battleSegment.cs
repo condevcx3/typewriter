@@ -28,6 +28,12 @@ public class battleSegment : MonoBehaviour
     private IEnumerator enemyAI;
     public GameObject youWin;
 
+    public GameObject songControl;
+    public GameObject stat1;
+    public GameObject stat2;
+    public GameObject stat3;
+    public GameObject stat4;
+
     // Start is called before the first frame update
     /*void Start()
     {
@@ -46,6 +52,7 @@ public class battleSegment : MonoBehaviour
     void Awake()
     {
         Debug.Log("Awake");
+        songControl.GetComponents<AudioSource>()[1].Play(0);
         dialogueReceiver = dialogueBox.GetComponent<DialogueBox>();
         oldKeyPresent = false;
         sandwichPresent = false;
@@ -54,7 +61,28 @@ public class battleSegment : MonoBehaviour
         selection = 0;
         typer = theTyper.GetComponent<actionTyper>();
         enemyAI = opponentAttack();
-        //StartCoroutine()
+        stat1.transform.position = player.transform.position;
+        stat2.transform.position = player.transform.position;
+        stat3.transform.position = player.transform.position;
+        stat4.transform.position = player.transform.position;
+    }
+
+    void OnEnable()
+    {
+        Debug.Log("Enabled!");
+        songControl.GetComponents<AudioSource>()[1].Play(0);
+        dialogueReceiver = dialogueBox.GetComponent<DialogueBox>();
+        oldKeyPresent = false;
+        sandwichPresent = false;
+        magicSubMenu = false;
+        itemSubMenu = false;
+        selection = 0;
+        typer = theTyper.GetComponent<actionTyper>();
+        enemyAI = opponentAttack();
+        stat1.transform.position = player.transform.position;
+        stat2.transform.position = player.transform.position;
+        stat3.transform.position = player.transform.position;
+        stat4.transform.position = player.transform.position;
     }
 
     public void enemyActivate(){
@@ -224,13 +252,66 @@ public class battleSegment : MonoBehaviour
 
     IEnumerator useSandwich(){
         pause = true;
-        typer.receiveAction(" You give the guard the sandwich.");
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
         opponent.SetActive(false);
+        songControl.GetComponents<AudioSource>()[1].Stop();
+        songControl.GetComponents<AudioSource>()[4].Play(0);
+        yield return new WaitForSeconds(3.0f);
+
+
+        stat1.SetActive(true);
+        Vector3 statPosition = player.transform.position;
+        statPosition.y += 1.5f;
+
+        while(statPosition != stat1.gameObject.transform.position){
+            stat1.gameObject.transform.position = Vector3.MoveTowards(stat1.gameObject.transform.position, statPosition, 0.05f);
+            //Lerp is great but it takes a looooong time at the end to finish the animation
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        yield return new WaitForSeconds(1.5f);
+        stat1.SetActive(false);
+
+        stat2.SetActive(true);
+
+        while(statPosition != stat2.gameObject.transform.position){
+            stat2.gameObject.transform.position = Vector3.MoveTowards(stat2.gameObject.transform.position, statPosition, 0.05f);
+            //Lerp is great but it takes a looooong time at the end to finish the animation
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        yield return new WaitForSeconds(1.5f);
+        stat2.SetActive(false);
+
+        stat3.SetActive(true);
+
+        while(statPosition != stat3.gameObject.transform.position){
+            stat3.gameObject.transform.position = Vector3.MoveTowards(stat3.gameObject.transform.position, statPosition, 0.05f);
+            //Lerp is great but it takes a looooong time at the end to finish the animation
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        yield return new WaitForSeconds(1.5f);
+        stat3.SetActive(false);
+
+        stat4.SetActive(true);
+
+        while(statPosition != stat4.gameObject.transform.position){
+            stat4.gameObject.transform.position = Vector3.MoveTowards(stat4.gameObject.transform.position, statPosition, 0.05f);
+            //Lerp is great but it takes a looooong time at the end to finish the animation
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        yield return new WaitForSeconds(1.75f);
+        stat4.SetActive(false);
+
+        player.GetComponent<PlayerController>().enabled = true;
+
+        songControl.GetComponents<AudioSource>()[4].Stop();
+        
         typer.receiveAction(" He decides to let you pass!");
-        player.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        youWin.SetActive(true);
+
+        //youWin.SetActive(true);
         gameObject.SetActive(false);
     }
 
@@ -256,6 +337,7 @@ public class battleSegment : MonoBehaviour
         player.transform.position = Vector3.MoveTowards(player.transform.position, new Vector3(player.transform.position.x, player.transform.position.y - 1, player.transform.position.z), 1.0f);
         player.GetComponent<PlayerController>().enabled = true;
         opponent.GetComponent<BoxCollider2D>().enabled = true;
+        songControl.GetComponents<AudioSource>()[1].Stop();
         gameObject.SetActive(false);
     }
 

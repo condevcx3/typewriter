@@ -27,21 +27,21 @@ public class mainMenu : MonoBehaviour
     "Objects that gain strong ‘wills’ this way can gain characteristics resembling their purpose, and what their desire is when they gain sentience.",
     "The last thing you remember was going through your late grandfather’s attic, sorting through his stored items in preparation of selling his estate. In the back of the attic, you came across a typewriter, with a single half-finished paper sticking out of it. When you went to move the typewriter, you blacked out, and you found yourself here.",
     "“Who are you?” You might be asking? Think of me as the narrator for this unfinished story, and think of yourself as the main character who needs to finish it.",
-    "Your actions will correspond to actions that will be written on the page, but keep in mind that only 16 lines can fit on a single page, and whenever you hit that, you will be reset back to the place you started. You will lose any progress that you have made, but you get to keep all of the items that you have found up to that point.",
+    "Your actions will correspond to actions that will be written on the page, but keep in mind that only 16 lines can fit on a single page, and whenever you hit that, you will be reset back to the place you started. You will lose most progress that you have made, but you get to keep all of the items that you have found up to that point.",
     "Good luck, protagonist, on your story."};
 
     //Player
     public GameObject player;
 
+    private bool selectionMade;
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(showTitle());
-        playText.SetActive(true);
-        quitText.SetActive(true);
         playText.GetComponent<Text>().font = selected;
         quitText.GetComponent<Text>().font = unselected;
-        
+        selectionMade = false;
     }
 
     IEnumerator showTitle(){
@@ -115,7 +115,7 @@ public class mainMenu : MonoBehaviour
             Application.Quit();
         }
 
-        if (messageDisplayed && Input.GetKeyDown(KeyCode.Q)) {
+        if (messageDisplayed && Input.GetKeyDown(KeyCode.Q) && selection == 2) {
             if (introList.Count > 1) {
                 introList.RemoveAt(0);
                 coroutine = showIntroduction();
@@ -128,10 +128,15 @@ public class mainMenu : MonoBehaviour
                 SceneManager.LoadScene("Game");
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Q)) {
-            StopCoroutine(coroutine);
-            introText.GetComponent<Text>().text = introList[0];
-            messageDisplayed = true;
+        else if (Input.GetKeyDown(KeyCode.Q) && selection == 2) {
+            if (!selectionMade){
+                selectionMade = true; //Prevents an error
+            }
+            else{
+                StopCoroutine(coroutine);
+                introText.GetComponent<Text>().text = introList[0];
+                messageDisplayed = true;
+            }
         }
     }
 
@@ -142,6 +147,7 @@ public class mainMenu : MonoBehaviour
         playText.SetActive(false);
         quitText.SetActive(false);
         TitleText.GetComponent<Text>().text = "";
+        yield return new WaitForSeconds(0.3f);
         coroutine = showIntroduction();
         StartCoroutine(coroutine);
         /* player.SetActive(false);

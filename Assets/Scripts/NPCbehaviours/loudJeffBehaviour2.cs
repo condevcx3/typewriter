@@ -5,7 +5,6 @@ using UnityEngine;
 public class loudJeffBehaviour2 : MonoBehaviour
 {
     private SpriteRenderer render;
-    public GameObject player;
     public GameObject dialogueBox;
     private DialogueBox dialogueReceiver;
     // Giving Party Popper
@@ -13,7 +12,7 @@ public class loudJeffBehaviour2 : MonoBehaviour
     private List<string> messageList1 = new List<string>(){"DID YOU AVOID ALL THE STICKS??\nJOKES ON YOU, YOU'RE A GHOST!!\nYOU CAN'T STEP ON ANYTHING!!!!",
     "YOU'VE BEEN PRANKED!!\nHAHAHAHAHAHA!!",
     "...",
-    "ENJOY YOUR PARTY POPPER!!\nHAHAHAHA"};
+    "ENJOY YOUR NOISEMAKER!!\nHAHAHAHA"};
     private bool inRange;
     private PlayerController playerController;
     public GameObject loudJeff;
@@ -47,11 +46,12 @@ public class loudJeffBehaviour2 : MonoBehaviour
     }
 
     public void resetText(){
+        inRange = false;
         nameList1 = new List<string>(){"LOUD JEFF", "LOUD JEFF", "You", "LOUD JEFF"};
         messageList1 = new List<string>(){"DID YOU AVOID ALL THE STICKS??\nJOKES ON YOU, YOU'RE A GHOST!!\nYOU CAN'T STEP ON ANYTHING!!!!",
         "YOU'VE BEEN PRANKED!!\nHAHAHAHAHAHA!!",
         "...",
-        "ENJOY YOUR PARTY POPPER!!\nHAHAHAHA"};
+        "ENJOY YOUR NOISEMAKER!!\nHAHAHAHA"};
     }
 
     void Update(){

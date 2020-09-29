@@ -24,10 +24,14 @@ public class transition : MonoBehaviour
     private string toBigAls = " Welcome to Big Al's Fresh Flesh.";
     private string toGateLocked = " There is a large locked gate.";
     private string toGateOpen = " There is a large open gate here.";
-    private string toVoid = " A guard stands in your path.";
+    private string toVoid = " It's a guard-den.";
     private string toQuietForest1 = " A dapper man needs a hand.";
     private string toQuietForest2 = " Sticks lie in your path.";
     private string toQuietForest3 = " A dapper man awaits you.";
+    private string toPedestal = " A shrine to a powerful object.";
+    private string toPartyWall = " It's a wall that isn't made of bricks.";
+    private string toPathToStart1 = " You think it's nice here.";
+    private string toPathToStart2 = " There is an elbow shaped path.";
 
 
     void Start(){
@@ -120,14 +124,26 @@ public class transition : MonoBehaviour
         else if (newArea.name == "Gate"){
             typer.receiveAction(toGateOpen);
         }
-        else if (newArea.name == "QuietForest (1)"){
+        else if (newArea.name == "QuietForest1"){
             typer.receiveAction(toQuietForest1);
         }
-        else if (newArea.name == "QuietForest (2)"){
+        else if (newArea.name == "QuietForest2"){
             typer.receiveAction(toQuietForest2);
         }
-        else if (newArea.name == "QuietForest (3)"){
+        else if (newArea.name == "QuietForest3"){
             typer.receiveAction(toQuietForest3);
+        }
+        else if (newArea.name == "Pedestal"){
+            typer.receiveAction(toPedestal);
+        }
+        else if (newArea.name == "PartyWall"){
+            typer.receiveAction(toPartyWall);
+        }
+        else if (newArea.name == "PathToStart1"){
+            typer.receiveAction(toPathToStart1);
+        }
+        else if (newArea.name == "PathToStart2"){
+            typer.receiveAction(toPathToStart2);
         }
     }
 
